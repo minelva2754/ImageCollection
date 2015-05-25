@@ -7,30 +7,30 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+
 
 public class GetFile {
-    public static void main(String args[]){
-	new GetFile();
+	public static void main(String args[]){
+	new GetFile(); 
+
     }
     public GetFile(){
 	try {
-		for(int i=14; i<=18; i++){
-	    URI uri =new URI("http://g.e-hentai.org/s/3cd647a352/818017-" + i);
-	    URL url=uri.toURL();/*urlの取得*/
+		
+	    URL url =new URL("http://36.media.tumblr.com/db417a630b5c17a2ce20db5b461135cb/tumblr_n20rgza5Mh1s5lg4ho1_500.jpg");
 	    URLConnection urlcon =url.openConnection();/*サイトへの接続*/
 	    InputStream fileIS =urlcon.getInputStream();/*保存データの取得*/
-	    File saveFile = new File("a" + i +".jpg");/*ファイルの名前付け*/
+	    File saveFile = new File("a.png");/*ファイルの名前付け*/
 	    FileOutputStream fileOS = new FileOutputStream(saveFile);/* ファイルの保存*/
 	    int c;
 	    while((c =fileIS.read()) != -1) 
 	    fileOS.write((byte) c);
 	    fileOS.close();
 	    fileIS.close();
-		}
-	} catch (URISyntaxException e) {
-	   System.err.println(e);
-	} catch (MalformedURLException e) {
-	   System.err.println(e);
+		
 	} catch (IOException e) {
 	   System.err.println(e);
 	}
